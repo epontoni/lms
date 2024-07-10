@@ -79,9 +79,9 @@ export default function ChapterForm({
   };
 
   return (
-    <div className="relative mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="relative mt-6 border bg-secondary rounded-md p-4">
       {isUpdating && (
-        <div className="absolute h-full w-full bg-slate-500/20 top-0 right-0 rounded-md flex items-center justify-center">
+        <div className="absolute h-full w-full bg-secondary-foreground/50 top-0 right-0 rounded-md flex items-center justify-center">
           <Loader2 className="w-6 h-6 animate-spin" />
         </div>
       )}
@@ -104,7 +104,7 @@ export default function ChapterForm({
         <div
           className={cn(
             "text-sm mt-2",
-            !initialData.chapters.length && "text-slate-500 italic"
+            !initialData.chapters.length && "text-muted-foreground italic"
           )}
         >
           {!initialData.chapters.length && "No chapters"}

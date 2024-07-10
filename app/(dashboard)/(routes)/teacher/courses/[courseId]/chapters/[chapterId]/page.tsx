@@ -46,7 +46,7 @@ export default async function ChapterEditPage({
           label="This chapter is unpublished. It will not be visible in the course."
         />
       )}
-      <div className="p-6">
+      <div className="sm:p-6 py-6">
         <div className="flex items-center justify-between">
           <div className="w-full">
             <Link
@@ -58,8 +58,10 @@ export default async function ChapterEditPage({
             </Link>
             <div className="flex items-center justify-between w-full">
               <div className="flex flex-col gap-y-2">
-                <h1 className="text-2xl font-medium">Chapter creation</h1>
-                <span className="text-sm text-slate-700">
+                <h1 className="text-xl sm:text-2xl font-medium">
+                  Chapter creation
+                </h1>
+                <span className="text-sm text-muted-foreground">
                   Complete all fields {completionText}
                 </span>
               </div>

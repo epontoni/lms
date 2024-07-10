@@ -63,7 +63,7 @@ export default function ChapterAccessForm({
   };
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border bg-secondary rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Chapter access
         <Button
@@ -80,7 +80,7 @@ export default function ChapterAccessForm({
         </Button>
       </div>
       {!isEditing && (
-        <p className="text-sm mt-2 text-slate-700 italic">
+        <p className="text-sm mt-2 text-muted-foreground italic">
           {initialData.isFree ? (
             <>🆓 This chapter is free for preview</>
           ) : (
@@ -109,7 +109,7 @@ export default function ChapterAccessForm({
                         className={
                           !!form.watch("isFree")
                             ? "text-primary font-bold"
-                            : "text-slate-700"
+                            : "text-muted-foreground"
                         }
                       >
                         {!!form.watch("isFree") ? "Free" : "Not free"}

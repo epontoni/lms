@@ -69,7 +69,7 @@ export default function ChapterVideo({
   };
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border bg-secondary rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Chapter video
         <Button
@@ -92,8 +92,8 @@ export default function ChapterVideo({
       </div>
       {!isEditing &&
         (!initialData?.videoUrl ? (
-          <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md">
-            <Video className="h-10 w-10 text-slate-500" />
+          <div className="flex items-center justify-center h-60 bg-secondary-foreground rounded-md">
+            <Video className="h-10 w-10 text-muted-foreground" />
           </div>
         ) : (
           <>

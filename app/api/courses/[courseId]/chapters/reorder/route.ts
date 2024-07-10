@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export async function PUT(
@@ -34,6 +35,8 @@ export async function PUT(
         },
       });
     }
+
+    revalidatePath(`/teacher/courses/${params.courseId}`);
 
     return new NextResponse("Successfully reordered", { status: 200 });
   } catch (error) {

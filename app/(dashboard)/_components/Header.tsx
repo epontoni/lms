@@ -13,7 +13,7 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-1">
           <TeacherMode />
           <ModeToggle />
           <Auth />

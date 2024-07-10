@@ -65,7 +65,7 @@ export default function ChapterDescriptionForm({
   };
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border bg-secondary rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Course description
         <Button
@@ -85,7 +85,7 @@ export default function ChapterDescriptionForm({
         <div
           className={cn(
             "ql-editor",
-            !initialData.description && "text-slate-500 italic"
+            !initialData.description && "text-muted-foreground italic"
           )}
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(

@@ -119,7 +119,7 @@ export default function CategoryForm({
     );
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border bg-secondary rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Course category
         <Button
@@ -139,7 +139,7 @@ export default function CategoryForm({
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.categoryId && "text-slate-500 italic"
+            !initialData.categoryId && "text-muted-foreground italic"
           )}
         >
           {`${selectedOption?.label || "No cateogry assigned"}  > ${
@@ -154,123 +154,127 @@ export default function CategoryForm({
             className="space-y-4 mt-4"
           >
             <div className="flex flex-col sm:flex-row md:flex-col xl:flex-row gap-4">
-              <FormField
-                control={form.control}
-                name="categoryId"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col flex-1">
-                    <Label>Category</Label>
-                    <FormControl>
-                      <Combobox options={options} {...field} />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-              {/* <Button variant="link" className="flex gap-2 self-end" onClick={() =>}>
+              <div className="flex-1 space-y-2">
+                <FormField
+                  control={form.control}
+                  name="categoryId"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col flex-1">
+                      <Label>Category</Label>
+                      <FormControl>
+                        <Combobox options={options} {...field} />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+                {/* <Button variant="link" className="flex gap-2 self-end" onClick={() =>}>
                 <PlusCircle className="w-4 h-4" />
                 Add new category
               </Button> */}
 
-              {/* --------------------------------- */}
-              <AlertDialog>
-                <AlertDialogTrigger className="flex w-full gap-2 items-center justify-end text-sm text-primary hover:text-foreground">
-                  <PlusCircle className="w-4 h-4" />
-                  Add new category
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>
-                      Name of the new category
-                    </AlertDialogTitle>
-                    <AlertDialogDescription>
-                      <Input
-                        type="text"
-                        placeholder="e.g. Computational thinking"
-                        onChange={(e) => setNewCategory(e.target.value)}
-                      />
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction
-                      onClick={() => startTransition(handleAddCategory)}
-                    >
-                      Add
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
+                {/* --------------------------------- */}
+                <AlertDialog>
+                  <AlertDialogTrigger className="flex w-full gap-2 items-center justify-end text-sm text-primary hover:text-foreground">
+                    <PlusCircle className="w-4 h-4" />
+                    Add new category
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>
+                        Name of the new category
+                      </AlertDialogTitle>
+                      <AlertDialogDescription>
+                        <Input
+                          type="text"
+                          placeholder="e.g. Computational thinking"
+                          onChange={(e) => setNewCategory(e.target.value)}
+                        />
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction
+                        onClick={() => startTransition(handleAddCategory)}
+                      >
+                        Add
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              </div>
               {/* --------------------------------- */}
 
-              <FormField
-                control={form.control}
-                name="subCategoryId"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col flex-1">
-                    <Label>
-                      Subcategory{" "}
-                      <span className="text-xs text-muted-foreground">
-                        (Pre-select a category)
-                      </span>
-                    </Label>
-                    <FormControl>
-                      <Combobox
-                        options={
-                          options.find(
-                            (category) =>
-                              category.value === form.watch("categoryId")
-                          )?.subCategories || []
-                        }
-                        {...field}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-
-              {/* --------------------------------- */}
-              <AlertDialog>
-                <AlertDialogTrigger
-                  className="flex w-full gap-2 items-center justify-end text-sm text-primary hover:text-foreground"
-                  disabled={!form.watch("categoryId")}
-                >
-                  <PlusCircle className="w-4 h-4" />
-                  Add new subcategory
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>
-                      Name of the new subcategory
-                    </AlertDialogTitle>
-                    <AlertDialogDescription className="flex flex-col gap-2">
+              <div className="flex-1 space-y-2">
+                <FormField
+                  control={form.control}
+                  name="subCategoryId"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col flex-1">
                       <Label>
-                        Subcategory of:{" "}
-                        <strong>
-                          {
-                            options?.filter(
-                              (option) =>
-                                option.value === form.watch("categoryId")
-                            )[0]?.label
-                          }
-                        </strong>
+                        Subcategory{" "}
+                        <span className="text-xs text-muted-foreground">
+                          (Pre-select a category)
+                        </span>
                       </Label>
-                      <Input
-                        type="text"
-                        placeholder="e.g. Computational thinking"
-                        onChange={(e) => setNewSubcategory(e.target.value)}
-                      />
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction
-                      onClick={() => startTransition(handleAddSubcategory)}
-                    >
-                      Add
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
+                      <FormControl>
+                        <Combobox
+                          options={
+                            options.find(
+                              (category) =>
+                                category.value === form.watch("categoryId")
+                            )?.subCategories || []
+                          }
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+
+                {/* --------------------------------- */}
+                <AlertDialog>
+                  <AlertDialogTrigger
+                    className="flex w-full gap-2 items-center justify-end text-sm text-primary hover:text-foreground"
+                    disabled={!form.watch("categoryId")}
+                  >
+                    <PlusCircle className="w-4 h-4" />
+                    Add new subcategory
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>
+                        Name of the new subcategory
+                      </AlertDialogTitle>
+                      <AlertDialogDescription className="flex flex-col gap-2">
+                        <Label>
+                          Subcategory of:{" "}
+                          <strong>
+                            {
+                              options?.filter(
+                                (option) =>
+                                  option.value === form.watch("categoryId")
+                              )[0]?.label
+                            }
+                          </strong>
+                        </Label>
+                        <Input
+                          type="text"
+                          placeholder="e.g. Computational thinking"
+                          onChange={(e) => setNewSubcategory(e.target.value)}
+                        />
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction
+                        onClick={() => startTransition(handleAddSubcategory)}
+                      >
+                        Add
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              </div>
               {/* --------------------------------- */}
             </div>
 

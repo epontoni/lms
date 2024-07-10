@@ -17,7 +17,7 @@ export default function DashboardLayout({
       <div className="grid h-screen w-full pb-[56px] md:pl-[150px] md:pb-0">
         <Sidebar />
 
-        <div className="flex flex-col">
+        <div className="flex flex-col overflow-x-auto">
           <Header />
 
           <main className="h-full p-4 mb-[3rem] md:mb-0">{children}</main>

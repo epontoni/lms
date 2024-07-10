@@ -66,7 +66,7 @@ export default function PriceForm({ initialData, courseId }: PriceFormProps) {
   };
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border bg-secondary rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Course Price
         <Button
@@ -86,7 +86,7 @@ export default function PriceForm({ initialData, courseId }: PriceFormProps) {
         <p
           className={cn(
             "text-md flex items-center gap-1 p-3",
-            !initialData.price && "text-slate-500 italic"
+            !initialData.price && "text-muted-foreground italic"
           )}
         >
           {(initialData.price && formatPrice(initialData.price)) ||

@@ -39,7 +39,7 @@ export default function ImageForm({ initialData, courseId }: ImageFormProps) {
   };
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border bg-secondary rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Course image
         <Button
@@ -62,8 +62,8 @@ export default function ImageForm({ initialData, courseId }: ImageFormProps) {
       </div>
       {!isEditing &&
         (!initialData?.imageUrl ? (
-          <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md">
-            <ImageIcon className="h-10 w-10 text-slate-500" />
+          <div className="flex items-center justify-center h-60 bg-secondary-foreground rounded-md">
+            <ImageIcon className="h-10 w-10 text-muted-foreground" />
           </div>
         ) : (
           <div className="relative aspect-video mt-2">

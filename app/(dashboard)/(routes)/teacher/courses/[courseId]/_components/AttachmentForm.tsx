@@ -57,7 +57,7 @@ export default function AttachmentForm({
   };
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border bg-secondary rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Attachments
         <Button
@@ -81,7 +81,7 @@ export default function AttachmentForm({
       {!isEditing && (
         <>
           {initialData.attachments.length === 0 && (
-            <p className="text-sm mt-2 text-slate-500 italic">
+            <p className="text-sm mt-2 text-muted-foreground italic">
               No attachments yet
             </p>
           )}

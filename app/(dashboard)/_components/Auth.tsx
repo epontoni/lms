@@ -23,9 +23,11 @@ export default function Auth() {
           <Button asChild>
             <SignInButton mode="redirect" fallbackRedirectUrl="/dashboard" />
           </Button>
-          <Button asChild variant="secondary">
-            <SignUpButton mode="redirect" fallbackRedirectUrl="/dashboard" />
-          </Button>
+          <div className="hidden sm:block">
+            <Button asChild variant="secondary">
+              <SignUpButton mode="redirect" fallbackRedirectUrl="/dashboard" />
+            </Button>
+          </div>
         </SignedOut>
         <SignedIn>
           <UserMenu />

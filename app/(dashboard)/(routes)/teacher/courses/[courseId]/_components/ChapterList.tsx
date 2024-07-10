@@ -2,7 +2,15 @@
 
 import { Chapter } from "@prisma/client";
 import { useEffect, useState } from "react";
-import { closestCenter, DndContext } from "@dnd-kit/core";
+import {
+  closestCenter,
+  DndContext,
+  useSensors,
+  useSensor,
+  MouseSensor,
+  TouchSensor,
+  SensorDescriptor,
+} from "@dnd-kit/core";
 import {
   arrayMove,
   SortableContext,
@@ -23,6 +31,11 @@ export default function ChapterList({
 }: ChapterListProps) {
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const [chapters, setChapters] = useState<Chapter[]>(items);
+
+  const mouseSensor = useSensor(MouseSensor);
+  const touchSensor = useSensor(TouchSensor);
+
+  const sensors = useSensors(mouseSensor, touchSensor);
 
   useEffect(() => {
     setIsMounted(true);
@@ -64,7 +77,11 @@ export default function ChapterList({
   };
 
   return (
-    <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+    <DndContext
+      collisionDetection={closestCenter}
+      onDragEnd={handleDragEnd}
+      sensors={sensors}
+    >
       <SortableContext
         items={chapters.map((chapter) => chapter.position)}
         strategy={verticalListSortingStrategy}

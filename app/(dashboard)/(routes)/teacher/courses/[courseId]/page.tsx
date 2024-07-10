@@ -79,7 +79,7 @@ export default async function CourseIdPage({
       {!course.isPublished && (
         <Banner label="This course is unpublished. It will not be visible to the students. At least one chapter must be published." />
       )}
-      <div className="p-6">
+      <div className="sm:p-6">
         <div className="flex flex-col items-center justify-between">
           {/* <div className="flex flex-col gap-y-2 border-2">
             <h1 className="text-2xl font-medium">Course setup</h1>
@@ -90,8 +90,10 @@ export default async function CourseIdPage({
 
           <div className="flex items-center justify-between w-full">
             <div className="flex flex-col gap-y-2">
-              <h1 className="text-2xl font-medium">Chapter creation</h1>
-              <span className="text-sm text-slate-700">
+              <h1 className="text-xl md:text-2xl font-medium">
+                Chapter creation
+              </h1>
+              <span className="text-sm text-muted-foreground">
                 Complete all fields {completionText}
               </span>
             </div>

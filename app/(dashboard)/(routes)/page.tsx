@@ -13,7 +13,7 @@ export default function DashboardPage() {
   };
   return (
     <main>
-      <div className="border rounded-md flex items-center justify-center gap-2 bg-gray-100 p-5 md:p-10 font-bold md:text-xl">
+      <div className="border rounded-md flex items-center justify-center gap-2 bg-secondary p-5 md:p-10 font-bold md:text-xl">
         {" "}
         <span className="animate-hand-wave origin-hand-wave text-3xl md:text-5xl">
           👋
