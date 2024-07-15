@@ -9,6 +9,7 @@ import CourseList from "../courses/_components/CourseList";
 import { getDashboardCourses } from "@/lib/actions/dashboard-courses";
 import InfoCard from "../../_components/InfoCard";
 import { CheckCircle, Clock } from "lucide-react";
+import Link from "next/link";
 //import { auth } from "@clerk/nextjs/server";
 
 export default async function DashboardPage() {
@@ -16,7 +17,7 @@ export default async function DashboardPage() {
   // const { user } = useUser();
 
   const user = await currentUser();
-  console.log("AUTH", user);
+  //console.log("AUTH", user);
   const { completedCourses, coursesInProgress } = await getDashboardCourses(
     user?.id!
   );
@@ -31,7 +32,26 @@ export default async function DashboardPage() {
         <span className="animate-hand-wave origin-hand-wave text-3xl md:text-5xl">
           👋{" "}
         </span>
-        Hello, {user?.firstName}!
+        {user?.firstName && <span>Hello, {user?.firstName}!</span>}
+        {!user && (
+          <span>
+            Hola!{" "}
+            <Link
+              href="/sign-in"
+              className="hover:text-primary hover:underline transition-all"
+            >
+              Inicia sesión
+            </Link>{" "}
+            o{" "}
+            <Link
+              href="/sign-up"
+              className="hover:text-primary hover:underline transition-all"
+            >
+              crea una cuenta
+            </Link>
+            .
+          </span>
+        )}
       </div>
       <h1 className="flex items-end gap-2 font-bold text-2xl my-3">
         My courses{" "}
