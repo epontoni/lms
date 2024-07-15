@@ -1,4 +1,6 @@
+import CourseProgress from "@/components/course-progress";
 import { IconBadge } from "@/components/icon-badge";
+import { Badge } from "@/components/ui/badge";
 import { CourseWithProgressWithCategory } from "@/lib/actions/course.actions";
 import { formatPrice } from "@/lib/utils";
 import { BookOpen } from "lucide-react";
@@ -11,7 +13,7 @@ export default function CourseCard({
   info: CourseWithProgressWithCategory;
 }) {
   return (
-    <Link href={`courses/${info.id}`}>
+    <Link href={`course/${info.id}`}>
       <div className="group hover:shadow-sm hover:bg-secondary transition overflow-hidden border rounded-lg p-3 h-full">
         <div className="relative w-full aspect-video rounded-md">
           <Image
@@ -38,10 +40,18 @@ export default function CourseCard({
             </div>
           </div>
           {info.progress !== null ? (
-            <>PROGRESS COMPONENT</>
+            <CourseProgress
+              size="sm"
+              variant={info.progress === 100 ? "success" : "default"}
+              value={info.progress}
+            />
           ) : (
             <p className="text-sm md:text-md text-muted-foreground font-medium ">
-              {formatPrice(info.price!)}
+              {info.price === 0 ? (
+                <Badge>FREE</Badge>
+              ) : (
+                formatPrice(info.price!)
+              )}
             </p>
           )}
         </div>

@@ -21,7 +21,7 @@ model Course {
   title       String  @db.Text
   description String? @db.Text
   imageUrl    String? @db.Text
-  price       Float?
+  price       Float?  @default(0)
   isPublished Boolean @default(false)
 
   categoryId String?
@@ -83,7 +83,7 @@ model Chapter {
   videoUrl    String? @db.Text
   position    Int
   isPublished Boolean @default(false)
-  isFree      Boolean @default(false)
+  isFree      Boolean @default(true)
 
   muxData MuxData?
 
@@ -133,13 +133,14 @@ model Purchase {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  @@unique([userId, courseId])
   @@index([courseId])
 }
 
 model Customer {
-  id         String @id @default(uuid())
-  userId     String @unique
-  customerId String @unique
+  id         String  @id @default(uuid())
+  userId     String  @unique
+  customerId String? @unique
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

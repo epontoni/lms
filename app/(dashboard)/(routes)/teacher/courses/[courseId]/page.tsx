@@ -62,7 +62,7 @@ export default async function CourseIdPage({
     course.title,
     course.description,
     course.imageUrl,
-    course.price,
+    //course.price,
     course.categoryId,
     course.subCategoryId,
     course.chapters.some((chapter) => chapter.isPublished), // At least one pubished chapter

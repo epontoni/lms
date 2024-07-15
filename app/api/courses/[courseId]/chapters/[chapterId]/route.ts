@@ -57,7 +57,7 @@ export async function PATCH(
     }
 
     // Si no es un enlace de Youtube, entonces creamos el asset y la muxData
-    if (!/youtu/.test(values.video)) {
+    if (values.videoUrl && !/youtu/.test(values.video)) {
       const asset = await mux.video.assets.create({
         input: values.videoUrl,
         playback_policy: ["public"],

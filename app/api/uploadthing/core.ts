@@ -1,3 +1,4 @@
+import { isTeacher } from "@/lib/actions/teacher.actions";
 import { auth } from "@clerk/nextjs/server";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
@@ -8,9 +9,10 @@ const f = createUploadthing();
 const handleAuth = async () => {
   // This code runs on your server before upload
   const { userId } = await auth();
+  const isAuthorized = isTeacher(userId);
 
   // If you throw, the user will not be able to upload
-  if (!userId) throw new UploadThingError("Unauthorized");
+  if (!userId || !isAuthorized) throw new UploadThingError("Unauthorized");
 
   // Whatever is returned here is accessible in onUploadComplete as `metadata`
   return { userId };

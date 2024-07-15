@@ -54,7 +54,7 @@ export default function ChapterAccessForm({
         `/api/courses/${courseId}/chapters/${chapterId}`,
         values
       );
-      toast.success("Chapter title updated");
+      toast.success("Chapter access updated");
       toggleEdit();
       router.refresh();
     } catch (error) {

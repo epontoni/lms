@@ -90,7 +90,7 @@ export default function PriceForm({ initialData, courseId }: PriceFormProps) {
           )}
         >
           {(initialData.price && formatPrice(initialData.price)) ||
-            "You have not yet added a Price"}
+            "$ 0. By default all courses are free."}
         </p>
       )}
       {isEditing && (

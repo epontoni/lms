@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
+import { isTeacher } from "@/lib/actions/teacher.actions";
 
 const mux = new Mux({
   tokenId: process.env.MUX_TOKEN_ID!,
@@ -15,9 +16,10 @@ export async function DELETE(
 ) {
   try {
     const { userId } = auth();
+    const isAuthorized = isTeacher(userId);
     const { courseId } = params;
 
-    if (!userId) {
+    if (!userId || !isAuthorized) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
@@ -64,10 +66,11 @@ export async function PATCH(
 ) {
   try {
     const { userId } = auth();
+    const isAuthorized = isTeacher(userId);
     const { courseId } = params;
     const values = await req.json();
 
-    if (!userId) {
+    if (!userId || !isAuthorized) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
