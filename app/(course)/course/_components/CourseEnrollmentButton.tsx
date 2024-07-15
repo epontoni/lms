@@ -10,8 +10,6 @@ import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
 
 import axios from "axios";
-import { checkout } from "@/lib/actions/purchase.actionts";
-import { redirect } from "next/navigation";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 
